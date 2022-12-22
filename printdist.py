@@ -2,7 +2,10 @@ def print_str(data):
     print("                          ВТОРОЙ СПРАВОЧНИК")
     print("-" * 73)
     for i, v in enumerate(data, 1):
-        print(f"|   ||     {i}. {v}" + " " * (60 - len(v) - 7) + "||   |")
+        if i < 10:
+            print(f"|   ||     {i}. {v}" + " " * (60 - len(v) - 7) + "||   |")
+        else:
+            print(f"|   ||     {i}. {v}" + " " * (60 - len(v) - 8) + "||   |")
     print("-" * 73)
 
 
