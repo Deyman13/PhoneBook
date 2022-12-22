@@ -2,6 +2,29 @@ def input_contakt():
     return input('Введитe фамилию, имя, телефон, описание(15 символов) через пробел.\n').title().split()
 
 
+def find_string(book):
+    result = []
+    ans = input(
+        "Введите что либо, указывающее на конкретный контакт. Номер телефона, фамилию или имя:\n")
+    for line in book:
+        if ans.lower() in line.lower():
+            result.append(line)
+    return result
+
+
+def print_contact(line):
+    print("-" * len(line))
+    print(line)
+    print("-" * len(line))
+
+
+def search(book):
+    temp = book['str'] + book['lst']
+    ser = find_string(temp)
+    for i in set(ser):
+        if i != -1:
+            print_contact(i)
+
 def find(book):
     ans = input(
         "Введите что либо, указывающее на конкретный контакт. Номер телефона, фамилию или имя:\n")
@@ -13,20 +36,6 @@ def find(book):
     print()
     return -1
 
-
-def print_contact(line):
-    print("-" * len(line))
-    print(line)
-    print("-" * len(line))
-
-
-def search(book):
-    temp = book['str']+book['lst']
-    index = find(temp)
-    if index != -1:
-        print_contact(temp[index])
-
-
 def delete_contact(book):
     index = find(book)
     if index != -1:
@@ -36,11 +45,13 @@ def delete_contact(book):
             print("Контакт успешно удален!")
             print()
             return book[index]
-        print()
-        print("Контакт не будет удален")
-        print()
+        else:
+            print()
+            print("Контакт не будет удален!")
+            print()
+            return ""
+    else:
         return ''
-
 
 def change_contact(book):
     index = find(book)
@@ -49,8 +60,7 @@ def change_contact(book):
         if input('Этот контакт будет изменен!!! 1 - Да, 2 - Нет\n') == '1':
             old_result = book[index]
             result = book[index].split(", ")
-            change = input(
-                "Что именно вы хотите изменить? Введите 'Имя', 'Фамилия', 'Номер', 'Комментарий':\n ")
+            change = input("Что именно вы хотите изменить? Введите 'Имя', 'Фамилия', 'Номер', 'Комментарий':\n ")
             name = result[0]
             secondname = result[1]
             number = result[2]
@@ -71,6 +81,12 @@ def change_contact(book):
             else:
                 print("Некорректный ввод!!!")
             print_contact(result)
+            print()
+            print("Контакт успешно изменен!")
             return result, old_result
         else:
-            return '', ''
+            print()
+            print("Контакт не будет изменен!")
+            return "", ""
+    else:
+        return '', ''
