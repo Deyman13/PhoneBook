@@ -1,6 +1,8 @@
-from function import init_dict, print_book, write_new_contact_list, write_new_contact_str, replace_contact_list 
-from function import replace_contact_str, delete_contact_str, delete_contact_list, clear, translate_str, translate_list
-from inputreplasechange import search
+from function import init_dict_ru, init_dict_eng, print_book, write_new_contact_list_ru, write_new_contact_str_ru, replace_contact_list_ru 
+from function import replace_contact_str_ru, delete_contact_str_ru, delete_contact_list_ru, clear
+from function import write_new_contact_str_eng, write_new_contact_list_eng, replace_contact_list_eng, replace_contact_str_eng
+from function import delete_contact_str_eng, delete_contact_list_eng
+from inputreplasechange import search_ru, search_eng
 
 
 def print_hint_ru():
@@ -27,7 +29,7 @@ def print_hint_ru():
 def print_hint_eng():
     print('''\n                  
         |====================================================================|
-        |       ===>> COMMANDS FOR WORKING WITH THE DIRECTORY <<===          |
+        |         ===>> COMMANDS FOR WORKING WITH THE DIRECTORY <<===        |
         |====================================================================|
 
         ||-*-*-*-*--------------------------------------------------*-*-*-*-||
@@ -63,11 +65,11 @@ def menu():
                 print("                 |-|-|       ПРИЯТНОГО ПОЛЬЗОВАНИЯ!!! :)       |-|-|")
                 print("                 || ===---===---===---===---===---===---===---=== ||")
                 book_all = {}
-                init_dict(book_all, "str")
-                init_dict(book_all, "lst")
-                dict_command = {'1': print_book, '2': write_new_contact_str,
-                                '3': write_new_contact_list, '4': search, '5': replace_contact_str,
-                                '6': replace_contact_list, '7': delete_contact_str, '8': delete_contact_list}
+                init_dict_ru(book_all, "str")
+                init_dict_ru(book_all, "lst")
+                dict_command = {'1': print_book, '2': write_new_contact_str_ru,
+                                '3': write_new_contact_list_ru, '4': search_ru, '5': replace_contact_str_ru,
+                                '6': replace_contact_list_ru, '7': delete_contact_str_ru, '8': delete_contact_list_ru}
                 print_hint_ru()
                 while True:
                     print()
@@ -116,11 +118,11 @@ def menu():
                 print("                 |-|-|            ENJOY YOUR USE!!! :)         |-|-|")
                 print("                 || ===---===---===---===---===---===---===---=== ||")
                 book_all = {}
-                init_dict(book_all, "str")
-                init_dict(book_all, "lst")
-                dict_command = {'1': print_book, '2': write_new_contact_str,
-                                '3': write_new_contact_list, '4': search, '5': replace_contact_str,
-                                '6': replace_contact_list, '7': delete_contact_str, '8': delete_contact_list}
+                init_dict_eng(book_all, "str")
+                init_dict_eng(book_all, "lst")
+                dict_command = {'1': print_book, '2': write_new_contact_str_eng,
+                                '3': write_new_contact_list_eng, '4': search_eng, '5': replace_contact_str_eng,
+                                '6': replace_contact_list_eng, '7': delete_contact_str_eng, '8': delete_contact_list_eng}
                 print_hint_eng()
                 while True:
                     print()
