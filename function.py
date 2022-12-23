@@ -2,7 +2,7 @@ from readandwrite import add_contact_str, add_contact_list, readfile_str, readfi
 from printdist import print_list, print_str
 from inputreplasechange import input_contakt, change_contact, delete_contact
 
-file_book = {"str":'Book1.txt',"lst":'Book2.txt'}
+file_book = {"str":'Book1.txt', "lst":'Book2.txt'}
 
 
 def init_dict(book,key):
@@ -74,6 +74,54 @@ def delete_contact_list(book):
         with open(file_book['lst'], "w", encoding="utf_8") as s:
             s.write(allfile)
         init_dict(book,'lst')
+
+
+def translate_str(book):
+    dictionary = {'Ь': '', 'ь': '', 'Ъ': '', 'ъ': '', 'А': 'A', 'а': 'a', 'Б': 'B', 'б': 'b', 'В': 'V', 'в': 'v',
+              'Г': 'G', 'г': 'g', 'Д': 'D', 'д': 'd', 'Е': 'E', 'е': 'e', 'Ё': 'E', 'ё': 'e', 'Ж': 'Zh', 'ж': 'zh',
+              'З': 'Z', 'з': 'z', 'И': 'I', 'и': 'i', 'Й': 'I', 'й': 'i', 'К': 'K', 'к': 'k', 'Л': 'L', 'л': 'l',
+              'М': 'M', 'м': 'm', 'Н': 'N', 'н': 'n', 'О': 'O', 'о': 'o', 'П': 'P', 'п': 'p', 'Р': 'R', 'р': 'r',
+              'С': 'S', 'с': 's', 'Т': 'T', 'т': 't', 'У': 'U', 'у': 'u', 'Ф': 'F', 'ф': 'f', 'Х': 'Kh', 'х': 'kh',
+              'Ц': 'Tc', 'ц': 'tc', 'Ч': 'Ch', 'ч': 'ch', 'Ш': 'Sh', 'ш': 'sh', 'Щ': 'Shch', 'щ': 'shch', 'Ы': 'Y',
+              'ы': 'y', 'Э': 'E', 'э': 'e', 'Ю': 'Iu', 'ю': 'iu', 'Я': 'Ia', 'я': 'ia'}
+
+
+    def match(text, alphabet=set('абвгдеёжзийклмнопрстуфхцчшщыьэъюя')):
+        return not alphabet.isdisjoint(text.lower())
+
+    boo = book["str"]
+
+    for word in boo:
+        for v in word:
+            if v.isalpha() and match(v) is True:
+                print(dictionary.get(v), end="")
+            elif not v.isalpha() or match(v) is False:
+                print(v, end="")
+        print()
+
+def translate_list(book):
+    dictionary = {'Ь': '', 'ь': '', 'Ъ': '', 'ъ': '', 'А': 'A', 'а': 'a', 'Б': 'B', 'б': 'b', 'В': 'V', 'в': 'v',
+              'Г': 'G', 'г': 'g', 'Д': 'D', 'д': 'd', 'Е': 'E', 'е': 'e', 'Ё': 'E', 'ё': 'e', 'Ж': 'Zh', 'ж': 'zh',
+              'З': 'Z', 'з': 'z', 'И': 'I', 'и': 'i', 'Й': 'I', 'й': 'i', 'К': 'K', 'к': 'k', 'Л': 'L', 'л': 'l',
+              'М': 'M', 'м': 'm', 'Н': 'N', 'н': 'n', 'О': 'O', 'о': 'o', 'П': 'P', 'п': 'p', 'Р': 'R', 'р': 'r',
+              'С': 'S', 'с': 's', 'Т': 'T', 'т': 't', 'У': 'U', 'у': 'u', 'Ф': 'F', 'ф': 'f', 'Х': 'Kh', 'х': 'kh',
+              'Ц': 'Tc', 'ц': 'tc', 'Ч': 'Ch', 'ч': 'ch', 'Ш': 'Sh', 'ш': 'sh', 'Щ': 'Shch', 'щ': 'shch', 'Ы': 'Y',
+              'ы': 'y', 'Э': 'E', 'э': 'e', 'Ю': 'Iu', 'ю': 'iu', 'Я': 'Ia', 'я': 'ia'}
+
+
+    def match(text, alphabet=set('абвгдеёжзийклмнопрстуфхцчшщыьэъюя')):
+        return not alphabet.isdisjoint(text.lower())
+
+    boo = book["lst"]
+
+    for word in boo:
+        for v in word:
+            if v.isalpha() and match(v) is True:
+                print(dictionary.get(v), end="")
+            elif not v.isalpha() or match(v) is False:
+                print(v, end="")
+        print()  
+
 
 import os
 def clear():
